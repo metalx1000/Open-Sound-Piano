@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <script src="js/phaser.js"></script>
+    <style>
+    canvas, html, body {
+            margin:0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            background-color: black;
+
+            height: 100%;
+            vertical-align: middle;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var height = 128;
+        var width = 224;
+        var res = "./res/"
+        var game = new Phaser.Game(width, height, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+        function preload() {
+            game.load.spritesheet('key', 'res/key.png', 32, 128);
+            game.load.spritesheet('key_black', 'res/key_black.png', 16, 64);
+
+            for(var i = 0;i < 7;i++){
+                game.load.audio('note' + i, ['res/audio/white_keys/'+i+'.mp3','res/audio/white_keys/'+i+'.ogg']);
+            }
+
+            for(var i = 0;i < 5;i++){
+                game.load.audio('note_black' + i, ['res/audio/black_keys/'+i+'.mp3','res/audio/black_keys/'+i+'.ogg']);
+            }
+        }
+
+        function create(){
+            keys = game.add.group();
+            for(var i = 0;i < 7;i++){
+                load_keys(i);
+            }
+
+            var black = [0,1,3,4,5];
+            for(var i = 0; i < black.length;i++){
+                load_black_keys(black[i]);
+            }
+
+            game.input.onDown.add(full_screen, this);
+        }
+
+        function update(){
+
+        }
+
+        function load_keys(i){
+            var x = i * 32;
+            var y = 0;
+            var key = keys.create(x, y, 'key');
+            key.note = 'note'+i;
+            key.inputEnabled = true;
+            //key.events.onInputDown.add(key_down,this);
+            key.events.onInputOver.add(key_down,this);
+            //key.events.onInputUp.add(key_up,this);
+            key.events.onInputOut.add(key_up,this);
+        }
+
+        function key_down(key){
+            key.frame = 1;  
+            var note = game.add.audio(key.note);
+            note.play(); 
+            //console.log(key.note);
+        }
+
+        function key_up(key){
+            key.frame = 0;   
+            //console.log("Up");
+        }
+
+        function load_black_keys(i){
+            var x = i * 32 + 24;
+            var y = 0;
+            var key = keys.create(x, y, 'key_black');
+            if(i>1){i-=1}
+            key.note = 'note_black'+i;
+            key.inputEnabled = true;
+            //key.events.onInputDown.add(key_down,this);
+            key.events.onInputOver.add(key_down,this);
+            //key.events.onInputUp.add(key_up,this);
+            key.events.onInputOut.add(key_up,this);
+        }
+
+        function full_screen(){
+            game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+            game.scale.startFullScreen();
+        }
+    </script>
+</head>
