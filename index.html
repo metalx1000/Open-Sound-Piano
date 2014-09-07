@@ -49,7 +49,9 @@
         }
 
         function update(){
-
+            for(var i = 0;i<keys.children.lenght;i++){
+                key_up(keys.children[i]);
+            }
         }
 
         function load_keys(i){
@@ -58,9 +60,9 @@
             var key = keys.create(x, y, 'key');
             key.note = 'note'+i;
             key.inputEnabled = true;
-            //key.events.onInputDown.add(key_down,this);
+            key.events.onInputDown.add(key_down,this);
             key.events.onInputOver.add(key_down,this);
-            //key.events.onInputUp.add(key_up,this);
+            key.events.onInputUp.add(key_up,this);
             key.events.onInputOut.add(key_up,this);
         }
 
@@ -83,9 +85,9 @@
             if(i>1){i-=1}
             key.note = 'note_black'+i;
             key.inputEnabled = true;
-            //key.events.onInputDown.add(key_down,this);
+            key.events.onInputDown.add(key_down,this);
             key.events.onInputOver.add(key_down,this);
-            //key.events.onInputUp.add(key_up,this);
+            key.events.onInputUp.add(key_up,this);
             key.events.onInputOut.add(key_up,this);
         }
 
