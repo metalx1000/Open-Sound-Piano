@@ -1,0 +1,35 @@
+CACHE MANIFEST
+
+# version 1
+./index.html
+./res/2.png
+./res/key.png
+./res/1.png
+./res/audio/black_keys/0.mp3
+./res/audio/black_keys/1.mp3
+./res/audio/black_keys/4.ogg
+./res/audio/black_keys/3.ogg
+./res/audio/black_keys/2.mp3
+./res/audio/black_keys/2.ogg
+./res/audio/black_keys/3.mp3
+./res/audio/black_keys/0.ogg
+./res/audio/black_keys/1.ogg
+./res/audio/black_keys/4.mp3
+./res/audio/white_keys/0.mp3
+./res/audio/white_keys/1.mp3
+./res/audio/white_keys/4.ogg
+./res/audio/white_keys/6.ogg
+./res/audio/white_keys/3.ogg
+./res/audio/white_keys/2.mp3
+./res/audio/white_keys/6.mp3
+./res/audio/white_keys/2.ogg
+./res/audio/white_keys/5.mp3
+./res/audio/white_keys/3.mp3
+./res/audio/white_keys/0.ogg
+./res/audio/white_keys/1.ogg
+./res/audio/white_keys/4.mp3
+./res/audio/white_keys/5.ogg
+./res/key_black.png
+./README.md
+./LICENSE
+./js/phaser.js
